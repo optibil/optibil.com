@@ -43,6 +43,9 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+
+      - name: Change directory
+        run: cd hugoplate-main
  
       - name: Setup Project
         run: npm run project-setup
