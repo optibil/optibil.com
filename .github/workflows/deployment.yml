@@ -43,25 +43,21 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-
-      - name: Change directory
-        run: cd hugoplate-main
  
       - name: Setup Project
-        run: npm run project-setup
+        run: cd hugoplate-main && npm run project-setup
  
       - name: Install npm dependencies
-        run: npm install
+        run: cd hugoplate-main && npm install
  
       - name: Build site
-        run: npm run build
+        run: cd hugoplate-main && npm run build
  
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
         with:
-          publish-dir: './dist'
-          production-branch: master
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          publish-dir: './hugoplate-main/public'
+          production-branch: main
           deploy-message: "Deploy from GitHub Actions"
           enable-pull-request-comment: false
           enable-commit-comment: true
